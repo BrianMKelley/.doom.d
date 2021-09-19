@@ -158,7 +158,7 @@
 (add-hook 'evil-insert-state-exit-hook 'save-buffer)
 
 ;; Rebind C-v to evil-paste-after to make Dragon Naturally Speaking paste correctly.
-
+;;
 ;; First, unbind C-v from the defaul key map.
 (define-key evil-motion-state-map (kbd "C-v") nil)
 
