@@ -74,6 +74,7 @@
 (setq projectile-project-search-path '("~/Dropbox/org/"))
 
 (use-package! org-roam
+  :defer t
   :custom
   (setq org-roam-directory "~/Dropbox/org/roam/")
   :config)
@@ -84,6 +85,7 @@
 
 
 (use-package! org-ref
+  :defer t
   :config
   (setq org-ref-default-bibliography '("~/Dropbox/org/projects/bibliography/myrefs.bib"))
   (setq org-ref-pdf-directory "~/Dropbox/papers/")
@@ -141,10 +143,12 @@
   (citeproc-org-setup))
 
 (use-package! beacon
+  :defer t
   :config
   (setq beacon-color "orange"))
 
 (use-package! wc-mode
+  :defer t
   :hook
   (org-mode . wc-mode))
 
