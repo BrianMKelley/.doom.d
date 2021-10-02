@@ -33,7 +33,8 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
+;; Henrik Lissner says line numbers slow down performance significantly.
+(setq display-line-numbers-type nil)
 
 
 ;; Here are some additional functions/macros that could help you configure Doom:
@@ -66,6 +67,10 @@
       "d" #'doi-add-bibtex-entry
       "c" #'crossref-add-bibtex-entry
       "b" #'org-ref-find-bad-citations)
+
+(map! :leader
+      :prefix ("k" . "my bindings")
+      "a" #'abbrev-mode)
 
 (map! :leader
       :prefix ("v" . "view")
@@ -152,7 +157,8 @@
   :hook
   (org-mode . wc-mode))
 
-(beacon-mode 1)
+;trying navflash instead
+;(beacon-mode 1)
 (abbrev-mode 1)
 
 (setq doom-modeline-enable-word-count t)
