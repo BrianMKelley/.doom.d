@@ -141,7 +141,6 @@
           ("POLISHED:" . "green"))))
 
 
-
 (use-package! citeproc-org
   :after org
   :config
