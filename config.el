@@ -153,7 +153,6 @@
   :hook
   (org-mode . wc-mode))
 
-;
 ;trying navflash instead
 ;(beacon-mode 1)
 (abbrev-mode 1)
