@@ -33,7 +33,8 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
+;; Henrik Lissner says line numbers slow down performance significantly.
+(setq display-line-numbers-type nil)
 
 
 ;; Here are some additional functions/macros that could help you configure Doom:
@@ -57,7 +58,8 @@
 
 (add-hook 'emacs-startup-hook 'toggle-frame-maximized)
 
-(setq doom-font (font-spec :family "Ubuntu Mono" :size 24))
+;; (setq doom-font (font-spec :family "Ubuntu Mono" :size 24))
+(setq doom-font (font-spec :family "Roboto Mono" :size 22))
 
 
 
@@ -66,6 +68,10 @@
       "d" #'doi-add-bibtex-entry
       "c" #'crossref-add-bibtex-entry
       "b" #'org-ref-find-bad-citations)
+
+(map! :leader
+      :prefix ("k" . "my bindings")
+      "a" #'abbrev-mode)
 
 (map! :leader
       :prefix ("v" . "view")
@@ -107,7 +113,7 @@
   (setq org-todo-keywords
         '((sequence "TODO:(t)" "OVERDUE:(o)" "WAIT(w)" "HOLD(h)" "|" "DONE(d)" "KILL(k)")
           (sequence "[ ](T)" "[-](S)" "[?](W)" "|" "[X](D)")
-          (sequence "ZERO:(0)" "ONE:(1)" "TWO:(2)" "THREE:(3)" "FOUR:(4)" "FIVE:(5)" "SIX:(6)" "SEVEN:(7)" "EIGHT:(8)" "MANY:(m)" "|" "INFINITY:(z)")
+          (sequence "ZERO:(0)" "ONE:(1)" "TWO:(2)" "THREE:(3)" "FOUR:(4)" "FIVE:(5)" "|" "INFINITY:(z)")
           (sequence "CONTENT:(c)" "STRUCTURE:(s)" "CLARITY:(C)" "FLOW:(f)" "LANGUAGE:(l)" "1stDRAFT:(r)" "2ndDRAFT:(R)" "POLISHED:(p)")))
   (setq org-todo-keyword-faces
         '(("[-]" . +org-todo-active)
@@ -116,25 +122,20 @@
           ("OVERDUE:" . "red1")
           ("HOLD" . +org-todo-onhold)
           ("PROJ" . +org-todo-project)
-          ("ZERO:" . "#FF0000")
-          ("ONE:" . "#FF1100")
-          ("TWO:" . "#FF2100")
-          ("THREE:" . "#FF3200")
-          ("FOUR:" . "#FF4300")
-          ("FIVE:" . "#FF5400")
-          ("SIX:" . "#FF6400")
-          ("SEVEN:" . "#FF7500")
-          ("EIGHT:" . "#FF8600")
-          ("MANY:" . "#FF8600")
+          ("ZERO:" . "red")
+          ("ONE:" . "orange red")
+          ("TWO:" . "dark orange")
+          ("THREE:" . "orange")
+          ("FOUR:" . "gold")
+          ("FIVE:" . "yellow")
           ("CONTENT:" . "#FF9700")
-          ("STRUCTURE:" . "#FFA700")
-          ("CLARITY:" . "#FFB800")
-          ("FLOW:" . "#FFC900")
-          ("LANGUAGE:" . "#FFDA00")
+          ("STRUCTURE:" . "gold")
+          ("CLARITY:" . "yellow green")
+          ("FLOW:" . "light sea green")
+          ("LANGUAGE:" . "dark cyan")
           ("1stDRAFT:" . "#FFEA00")
           ("2ndDRAFT:" . "#FFFB00")
-          ("POLISHED:" . "green"))))
-
+          ("POLISHED:" . "light slate gray"))))
 
 
 (use-package! citeproc-org
@@ -152,7 +153,9 @@
   :hook
   (org-mode . wc-mode))
 
-(beacon-mode 1)
+;
+;trying navflash instead
+;(beacon-mode 1)
 (abbrev-mode 1)
 
 (setq doom-modeline-enable-word-count t)
